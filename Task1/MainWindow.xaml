@@ -1,0 +1,41 @@
+﻿<Window x:Class="Task1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task1"
+        mc:Ignorable="d"
+        Title="CHUBAREV" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Column="0">
+            <DataGrid ItemsSource="{Binding Path=CountriesTable}" SelectedCellsChanged="DataGrid_SelectedCellsChanged" HeadersVisibility="None"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Column="1">
+            <DataGrid ItemsSource="{Binding Path=RegionsTable}" HeadersVisibility="None">
+
+            </DataGrid>
+        </ScrollViewer>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="SelectYear" Grid.Row="0" Text="{Binding SelectYear, Mode=TwoWay, StringFormat=\{0:D\}, UpdateSourceTrigger=PropertyChanged}"/>
+            <ScrollViewer Grid.Row="1">
+                <DataGrid ItemsSource="{Binding Path=MonthsTable}" HeadersVisibility="None">
+
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Label Grid.Row="1" Grid.ColumnSpan="3" Content="*Для просмотра статистики по регионам выберите страну из таблицы слева." />
+    </Grid>
+</Window>
